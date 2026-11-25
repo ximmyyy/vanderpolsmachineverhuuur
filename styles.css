@@ -359,3 +359,8 @@ h3 { max-width: 28ch; line-height: 1.02; }
 .nav__end { gap: var(--space-lg); }
 .nav__phone { font-size: var(--text-md); }
 .nav__cta { padding: 0 var(--space-lg); font-size: var(--text-lg); }
+/* the bar stays see-through over the photograph until the page scrolls; a darker top edge keeps it legible */
+.js .nav--over:not(.is-solid) { background: transparent; border-bottom-color: transparent; }
+.js .nav--over:not(.is-solid) .nav__links a, .js .nav--over:not(.is-solid) .nav__phone, .js .nav--over:not(.is-solid) .wordmark { text-shadow: 0 1px 12px var(--color-scrim); }
+.hero::after { background: linear-gradient(to bottom, color-mix(in oklab, var(--color-scrim) 78%, transparent) 0, transparent 220px), linear-gradient(to top, color-mix(in oklab, var(--color-scrim) 92%, transparent) 0%, color-mix(in oklab, var(--color-scrim) 60%, transparent) 38%, transparent 70%); }
+.hero:not(.hero--banner)::after { background: linear-gradient(to bottom, color-mix(in oklab, var(--color-scrim) 78%, transparent) 0, transparent 220px); }
