@@ -5,6 +5,7 @@
  * axes: dark/grotesk-heavy/warm · posture: committed (the orange carries one full section, contact; elsewhere a signal) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V5 · weakest: E, a hand-rolled tile viewer instead of a map library; kept it to one projection function and integer tiles scaled once */
 /* Hallmark · dismissed 23 · the one orange display figure is the Moerdijk case, 4 to 8 machines, on a page whose posture is committed */
+/* Hallmark · dismissed 28a · on the projects page the first image sits in a folded case row; the page opens on the aerial map, which is the LCP */
 /* Hallmark · dismissed 49 · the project list entries are two-line rows (project, its line, its coordinates) meant to wrap, not button labels */
 @import url("./tokens.css");
 @import url("./base.css");
@@ -296,3 +297,39 @@ h3 { max-width: 28ch; line-height: 1.02; }
   .hero__actions { grid-column: 5 / span 5; }
   .hero__where { grid-column: 10 / -1; }
 }
+
+/* ---------- the map, interactive: pins open cases, rows unfold ---------- */
+:root { --panel-inset: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); }
+.map__panel { top: 0; bottom: 0; left: 0; width: calc(var(--panel-inset) + 420px); padding-left: var(--panel-inset); border-top: 0; box-shadow: inset 0 var(--rule-bold) 0 var(--color-accent); }
+.map__panel ul { padding-top: var(--rule-bold); }
+.map__tiles.is-flying { transition: transform 650ms var(--ease-out), opacity 380ms var(--ease-out); }
+.map__tiles.is-leaving { transition: opacity 500ms var(--ease-in); }
+.map__pins { transition: opacity var(--dur-short) var(--ease-out); }
+.map__pins.is-moving { opacity: 0; }
+.pin { margin: 0; padding: 0; font: inherit; background: transparent; border: 0; cursor: pointer; pointer-events: auto; }
+.pin:hover span { background: var(--color-accent); color: var(--color-accent-ink); }
+.pin:hover i { outline-color: var(--color-ink); }
+.pin:active i { transform: scale(0.9); }
+.pin:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+.pin span { transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.pin.is-open i { width: 22px; height: 22px; }
+.case-item__head { position: relative; padding-right: var(--space-2xl) !important; }
+.case-item__head::after { content: "+"; position: absolute; right: var(--space-lg); top: var(--space-md); font-family: var(--font-display); font-weight: var(--display-weight); font-size: var(--text-xl); line-height: 1; color: var(--color-accent); transition: transform var(--dur-short) var(--ease-out); }
+.case-item__head[aria-expanded="true"] { background: var(--color-paper-3); color: var(--color-ink); box-shadow: inset 6px 0 0 var(--color-accent); }
+.case-item__head[aria-expanded="true"]::after { transform: rotate(45deg); }
+.case-item__body { padding: var(--space-md) var(--space-lg) var(--space-xl); background: var(--color-paper-3); color: var(--color-ink); box-shadow: inset 6px 0 0 var(--color-accent); }
+.case-item__photo { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--color-paper-2); }
+.case-item__photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) saturate(0.88); }
+.case-item__body > p { margin-top: var(--space-md); color: var(--color-ink-2); }
+.case-item__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md) var(--space-lg); margin: var(--space-lg) 0 0; padding-top: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule-strong); }
+.case-item__facts dt { font-size: var(--text-sm); color: var(--color-muted); }
+.case-item__facts dd { margin: var(--space-3xs) 0 0; font-weight: 600; }
+.js .case-item__body:not([hidden]) { animation: case-open var(--dur-long) var(--ease-out); }
+@keyframes case-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .map__tiles.is-flying, .map__tiles.is-leaving, .map__pins, .pin span, .case-item__head::after { transition: none; } .js .case-item__body:not([hidden]) { animation: none; } }
+@media (max-width: 60rem) {
+  .map__panel { width: auto; padding-left: 0; }
+  .map__panel ul { padding-top: 0; }
+}
+.map::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, var(--color-paper) calc(var(--panel-inset) + 420px), transparent calc(var(--panel-inset) + 700px)); }
+@media (max-width: 60rem) { .map::after { background: linear-gradient(to right, color-mix(in oklab, var(--color-paper) 70%, transparent), transparent 35%); } }
