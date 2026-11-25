@@ -1,0 +1,7 @@
+# alleen de site zelf gaat naar GitHub
+.hallmark/
+.claude/
+node_modules/
+.vercel/
+Thumbs.db
+.DS_Store

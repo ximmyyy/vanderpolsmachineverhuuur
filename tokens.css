@@ -1,0 +1,38 @@
+:root {
+  color-scheme: dark;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1.0625rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 2rem; --text-3xl: 2.75rem;
+  --text-mega: clamp(3.5rem, 8.4vw, 9.5rem);
+  --text-display: clamp(3rem, 6.2vw, 7rem);
+  --text-display-s: clamp(2.5rem, 4.6vw, 5rem);
+  --text-section: clamp(2.5rem, 4.4vw, 4.75rem);
+  --text-title: clamp(1.5rem, 1.6vw + 0.75rem, 2.25rem);
+  --text-lead: clamp(1.125rem, 0.4vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(68% 0.19 27); --color-success: oklch(72% 0.14 150);
+  --container: 1520px; --gutter: 64px; --gap-columns: 24px; --section-gap-s: 120px; --section-gap: 160px; --section-gap-l: 200px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+
+  /* ground: antraciet, tinted toward the brand orange */
+  --color-paper: oklch(16.5% 0.006 60);
+  --color-paper-2: oklch(20.5% 0.007 60);
+  --color-paper-3: oklch(25% 0.008 60);
+  --color-ink: oklch(96% 0.006 80);
+  --color-ink-2: oklch(87% 0.008 80);
+  --color-muted: oklch(74% 0.01 70);
+  --color-rule: oklch(33% 0.008 60);
+  --color-rule-strong: oklch(50% 0.01 60);
+  --color-scrim: oklch(12% 0.006 60);
+  /* the brand orange from avanderpolsmachineverhuur.nl (#f2942e), a signal and one field */
+  --color-accent: oklch(74.9% 0.156 62.3);
+  --color-accent-deep: oklch(68% 0.16 58);
+  --color-accent-ink: oklch(16.5% 0.006 60);
+  --color-focus: oklch(86% 0.13 75);
+
+  --font-display: "Archivo", "Arial Narrow", sans-serif;
+  --font-body: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: "IBM Plex Mono", ui-monospace, monospace;
+  --display-weight: 800; --tracking-display: -0.005em; --display-stretch: 62%;
+  --radius: 0; --rule-hair: 1px; --rule-bold: 3px;
+}
