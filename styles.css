@@ -278,3 +278,21 @@ h3 { max-width: 28ch; line-height: 1.02; }
   .hero::after { background: linear-gradient(to top, color-mix(in oklab, var(--color-scrim) 94%, transparent) 0%, color-mix(in oklab, var(--color-scrim) 78%, transparent) 55%, color-mix(in oklab, var(--color-scrim) 55%, transparent) 100%); }
   .pin:not(.is-open) span { display: none; }
 }
+
+/* home hero: the fleet stands above the head, the photograph fades into the ground below it */
+.hero:not(.hero--banner) { background: var(--color-paper); }
+.hero:not(.hero--banner) .hero__photo { inset: 0 0 auto 0; height: 62%; -webkit-mask-image: linear-gradient(to bottom, var(--color-ink) 70%, transparent 100%); mask-image: linear-gradient(to bottom, var(--color-ink) 70%, transparent 100%); }
+.hero:not(.hero--banner) .hero__photo > img { object-position: 55% 88%; }
+.hero:not(.hero--banner)::after { background: linear-gradient(to bottom, color-mix(in oklab, var(--color-scrim) 60%, transparent) 0%, transparent 14%); }
+@media (max-width: 60rem) {
+  .hero:not(.hero--banner) { min-height: auto; }
+  .hero:not(.hero--banner) .hero__photo { height: 56svh; }
+  .hero:not(.hero--banner) .hero__photo > img { object-position: 60% 80%; }
+  .hero:not(.hero--banner) .hero__body { padding-top: 46svh; }
+  .hero:not(.hero--banner)::after { background: linear-gradient(to bottom, color-mix(in oklab, var(--color-scrim) 60%, transparent) 0, transparent 120px); }
+}
+@media (min-width: 60.01rem) and (max-width: 90rem) {
+  .hero__foot .lead { grid-column: 1 / span 4; }
+  .hero__actions { grid-column: 5 / span 5; }
+  .hero__where { grid-column: 10 / -1; }
+}
