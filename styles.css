@@ -6,6 +6,7 @@
 /* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V5 · weakest: E, a hand-rolled tile viewer instead of a map library; kept it to one projection function and integer tiles scaled once */
 /* Hallmark · dismissed 23 · the one orange display figure is the Moerdijk case, 4 to 8 machines, on a page whose posture is committed */
 /* Hallmark · dismissed 28a · on the projects page the first image sits in a folded case row; the page opens on the aerial map, which is the LCP */
+/* Hallmark · answered F4 · the quote block in the bar is the one standing action the client asked to stand out; the hero keeps its own orange button for the same job */
 /* Hallmark · dismissed 49 · the project list entries are two-line rows (project, its line, its coordinates) meant to wrap, not button labels */
 @import url("./tokens.css");
 @import url("./base.css");
@@ -333,3 +334,28 @@ h3 { max-width: 28ch; line-height: 1.02; }
 }
 .map::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to right, var(--color-paper) calc(var(--panel-inset) + 420px), transparent calc(var(--panel-inset) + 700px)); }
 @media (max-width: 60rem) { .map::after { background: linear-gradient(to right, color-mix(in oklab, var(--color-paper) 70%, transparent), transparent 35%); } }
+
+/* ---------- the bar: solid, links centred, the phone in sight, the quote as an orange block ---------- */
+.nav, .js .nav--over:not(.is-solid) { background: var(--color-paper); border-bottom: var(--rule-hair) solid var(--color-rule-strong); }
+.nav__row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--space-xl); }
+.wordmark { grid-column: 1; justify-self: start; }
+.nav__links { grid-column: 2; margin: 0; justify-content: center; gap: var(--space-xl); }
+.nav__links a { font-size: var(--text-md); font-weight: 600; }
+.nav__end { grid-column: 3; justify-self: end; align-self: stretch; display: flex; align-items: center; gap: var(--space-xl); }
+.nav__phone { display: inline-flex; gap: var(--space-xs); font-family: var(--font-outlier); font-size: var(--text-lg); color: var(--color-ink); letter-spacing: 0; }
+.nav__icon { flex-shrink: 0; color: var(--color-accent); }
+.nav__cta { align-self: stretch; display: inline-flex; align-items: center; padding: 0 var(--space-xl); background: var(--color-accent); color: var(--color-accent-ink); font-family: var(--font-display); font-weight: var(--display-weight); font-stretch: var(--display-stretch); font-size: var(--text-xl); line-height: 1; text-transform: uppercase; letter-spacing: 0.01em; text-decoration: none; white-space: nowrap; transition: background-color var(--dur-short) var(--ease-out); }
+.nav__cta:hover { background: var(--color-accent-deep); }
+.nav__cta:active { background: var(--color-accent-deep); color: var(--color-paper-2); }
+.nav__cta:focus-visible { outline: 2px solid var(--color-accent-ink); outline-offset: -6px; }
+.nav__menu { margin-left: 0; }
+@media (prefers-reduced-motion: reduce) { .nav__cta { transition: none; } }
+@media (max-width: 90rem) { .nav__links { gap: var(--space-lg); } .nav__end { gap: var(--space-lg); } }
+@media (max-width: 80rem) { .nav__phone { display: inline-flex; } .nav__phone span { display: none; } .nav__icon { width: 24px; height: 24px; } }
+@media (max-width: 64rem) { .nav__end { grid-column: 3; } .nav__cta { font-size: var(--text-lg); padding: 0 var(--space-lg); } }
+@media (max-width: 40rem) { .nav__cta { display: none; } .nav__end { gap: var(--space-md); } }
+.nav__row { grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr); column-gap: var(--space-lg); }
+.nav__links { gap: var(--space-lg); }
+.nav__end { gap: var(--space-lg); }
+.nav__phone { font-size: var(--text-md); }
+.nav__cta { padding: 0 var(--space-lg); font-size: var(--text-lg); }
